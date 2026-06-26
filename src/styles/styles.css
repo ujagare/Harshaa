@@ -846,7 +846,7 @@ img {
 
 @media (max-width: 900px) {
   .hero {
-    min-height: auto;
+    min-height: 680px;
   }
 
   .hero-bg {
@@ -859,7 +859,7 @@ img {
 
   .hero-copy {
     max-width: 620px;
-    padding-bottom: 170px;
+    padding-bottom: 70px;
   }
 
   .eyebrow span,
@@ -885,6 +885,15 @@ img {
 }
 
 @media (max-width: 640px) {
+  .hero {
+    min-height: 590px;
+    padding-top: 14px;
+  }
+
+  .hero-content {
+    padding-top: 42px !important;
+  }
+
   .brand-mark {
     width: 46px;
     height: 46px;
@@ -896,8 +905,8 @@ img {
   }
 
   .brand-mark.logo-mark {
-    width: 58px;
-    height: 38px;
+    width: 48px;
+    height: 32px;
   }
 
   .brand-mark.logo-mark img {
@@ -906,23 +915,50 @@ img {
   }
 
   .hero-copy {
-    padding-bottom: 125px;
+    max-width: 88%;
+    padding-bottom: 34px;
   }
 
   .hero h1 {
-    font-size: clamp(2.8rem, 15vw, 4.35rem);
+    margin: 14px 0 12px;
+    font-size: clamp(2.45rem, 12vw, 3.25rem);
+    line-height: 0.92;
   }
 
   .eyebrow,
   .subline {
     align-items: flex-start;
     gap: 10px;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+  }
+
+  .subline {
+    font-size: 0.86rem;
+  }
+
+  .hero-copy p {
+    margin: 18px 0 18px;
+    max-width: 300px;
+    font-size: 0.92rem;
+    line-height: 1.55;
   }
 
   .hero-actions,
   .primary-button,
   .secondary-button {
     width: 100%;
+  }
+
+  .primary-button,
+  .secondary-button {
+    min-height: 46px;
+    padding-inline: 18px;
+    font-size: 0.9rem;
+  }
+
+  .after-hero {
+    padding-top: 28px;
   }
 
   .service-image {
@@ -949,6 +985,7 @@ img {
   .bottom-stat {
     border-right: 0;
     border-bottom: 1px solid rgba(176, 125, 55, 0.2);
+    min-height: 104px;
   }
 
   .bottom-stat:last-child {

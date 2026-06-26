@@ -166,7 +166,7 @@ function App() {
           </button>
         </nav>
 
-        <div className="relative z-10 mx-auto grid w-full pt-20 md:pt-28 lg:grid-cols-[0.55fr_0.45fr]">
+        <div className="hero-content relative z-10 mx-auto grid w-full pt-20 md:pt-28 lg:grid-cols-[0.55fr_0.45fr]">
           <motion.div
             className="hero-copy"
             initial={{ opacity: 0, x: -26 }}
