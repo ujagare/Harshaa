@@ -122,6 +122,26 @@ const navItems = [
   ['Contact', '/#contact'],
 ];
 
+const appBase = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
+
+function pageHref(path = '/') {
+  if (path === '/') {
+    return `${appBase}/` || '/';
+  }
+
+  return `${appBase}${path}`;
+}
+
+function getRoutePath() {
+  let path = window.location.pathname;
+
+  if (appBase && path.toLowerCase().startsWith(appBase.toLowerCase())) {
+    path = path.slice(appBase.length) || '/';
+  }
+
+  return path.replace(/\/$/, '') || '/';
+}
+
 function IconOrb({ src, index, className = '' }) {
   return (
     <motion.div
@@ -148,7 +168,7 @@ function SiteHeader({ variant = 'home' }) {
   return (
     <>
       <nav className={`site-nav ${variant === 'about' ? 'about-site-nav' : ''}`}>
-        <a className="brand" href="/">
+        <a className="brand" href={pageHref('/')}>
           <span className="brand-mark logo-mark">
             <img src={logoImage} alt="Midas Touch Magick logo" />
           </span>
@@ -159,21 +179,21 @@ function SiteHeader({ variant = 'home' }) {
         </a>
 
         <div className="nav-links">
-          <a className={variant === 'home' ? 'active' : ''} href="/">Home</a>
-          <a className={variant === 'about' ? 'active' : ''} href="/about">About</a>
-          <a href="/#services">Services <ChevronDown size={14} /></a>
-          <a href="/#shop">Shop</a>
-          <a href="/#testimonials">Testimonials</a>
-          <a href="/#blog">Blog</a>
-          <a href="/#contact">Contact</a>
+          <a className={variant === 'home' ? 'active' : ''} href={pageHref('/')}>Home</a>
+          <a className={variant === 'about' ? 'active' : ''} href={pageHref('/about')}>About</a>
+          <a href={pageHref('/#services')}>Services <ChevronDown size={14} /></a>
+          <a href={pageHref('/#shop')}>Shop</a>
+          <a href={pageHref('/#testimonials')}>Testimonials</a>
+          <a href={pageHref('/#blog')}>Blog</a>
+          <a href={pageHref('/#contact')}>Contact</a>
         </div>
 
         <a className="nav-cta" href="#booking">
           Book a Session <ArrowRight size={17} />
         </a>
         <div className="mobile-page-links" aria-label="Main pages">
-          <a className={variant === 'home' ? 'active' : ''} href="/">Home</a>
-          <a className={variant === 'about' ? 'active' : ''} href="/about">About</a>
+          <a className={variant === 'home' ? 'active' : ''} href={pageHref('/')}>Home</a>
+          <a className={variant === 'about' ? 'active' : ''} href={pageHref('/about')}>About</a>
         </div>
         <button
           className="menu-button"
@@ -196,7 +216,7 @@ function SiteHeader({ variant = 'home' }) {
         />
         <aside className="royal-menu-panel" aria-label="Mobile navigation">
           <div className="royal-menu-head">
-            <a className="brand" href="/" onClick={() => setIsMenuOpen(false)}>
+            <a className="brand" href={pageHref('/')} onClick={() => setIsMenuOpen(false)}>
               <span className="brand-mark logo-mark">
                 <img src={logoImage} alt="Midas Touch Magick logo" />
               </span>
@@ -218,7 +238,7 @@ function SiteHeader({ variant = 'home' }) {
             {navItems.map(([label, href]) => (
               <a
                 className={(variant === 'home' && label === 'Home') || (variant === 'about' && label === 'About') ? 'active' : ''}
-                href={href}
+                href={pageHref(href)}
                 key={label}
                 onClick={() => setIsMenuOpen(false)}
               >
@@ -243,7 +263,7 @@ function SiteFooter() {
     <footer className="site-footer px-5 pb-8 pt-16 md:px-10 lg:px-16">
       <div className="footer-panel mx-auto w-full">
         <div className="footer-brand">
-          <a className="brand" href="/">
+          <a className="brand" href={pageHref('/')}>
             <span className="brand-mark logo-mark">
               <img src={logoImage} alt="Midas Touch Magick logo" />
             </span>
@@ -263,18 +283,18 @@ function SiteFooter() {
 
         <div className="footer-column">
           <h4>Explore</h4>
-          <a href="/about">About</a>
-          <a href="/#services">Services</a>
-          <a href="/#shop">Shop</a>
-          <a href="/#testimonials">Testimonials</a>
+          <a href={pageHref('/about')}>About</a>
+          <a href={pageHref('/#services')}>Services</a>
+          <a href={pageHref('/#shop')}>Shop</a>
+          <a href={pageHref('/#testimonials')}>Testimonials</a>
         </div>
 
         <div className="footer-column">
           <h4>Sacred Services</h4>
-          <a href="/#services">Tarot Readings</a>
-          <a href="/#services">EFT Tapping</a>
-          <a href="/#services">Tantra Sessions</a>
-          <a href="/#services">Counselling</a>
+          <a href={pageHref('/#services')}>Tarot Readings</a>
+          <a href={pageHref('/#services')}>EFT Tapping</a>
+          <a href={pageHref('/#services')}>Tantra Sessions</a>
+          <a href={pageHref('/#services')}>Counselling</a>
         </div>
 
         <div className="footer-column footer-contact">
@@ -406,7 +426,7 @@ function HomePage({ icons }) {
                 understanding to create lasting change in your life.
               </p>
               <strong>Step into your power and discover the abundance that awaits.</strong>
-              <a className="primary-button compact" href="/about">
+              <a className="primary-button compact" href={pageHref('/about')}>
                 Learn More About Our Approach <ArrowRight size={17} />
               </a>
             </div>
@@ -577,7 +597,7 @@ function AboutPage() {
 
 function App() {
   const rootRef = useRef(null);
-  const isAboutPage = window.location.pathname.replace(/\/$/, '') === '/about';
+  const isAboutPage = getRoutePath() === '/about';
 
   const icons = useMemo(() => {
     const fallback = new Array(8).fill(null);
