@@ -122,9 +122,24 @@ const navItems = [
   ['Contact', '/#contact'],
 ];
 
-const appBase = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
+const configuredBase = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
+
+function getAppBase() {
+  if (configuredBase.startsWith('/') && configuredBase !== '') {
+    return configuredBase;
+  }
+
+  if (typeof window !== 'undefined' && window.location.hostname.endsWith('github.io')) {
+    const [repoName] = window.location.pathname.split('/').filter(Boolean);
+    return repoName ? `/${repoName}` : '';
+  }
+
+  return '';
+}
 
 function pageHref(path = '/') {
+  const appBase = getAppBase();
+
   if (path === '/') {
     return `${appBase}/` || '/';
   }
@@ -133,6 +148,7 @@ function pageHref(path = '/') {
 }
 
 function getRoutePath() {
+  const appBase = getAppBase();
   let path = window.location.pathname;
 
   if (appBase && path.toLowerCase().startsWith(appBase.toLowerCase())) {
