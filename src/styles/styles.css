@@ -974,6 +974,47 @@ img {
     height: 260px;
   }
 
+  .transform-copy span {
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+  }
+
+  .transform-copy h2 {
+    margin: 8px 0 16px;
+    max-width: 100%;
+    font-size: clamp(1.85rem, 8.8vw, 2.25rem);
+    line-height: 0.98;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+
+  .transform-copy p {
+    font-size: 0.94rem;
+    line-height: 1.68;
+  }
+
+  .transform-copy strong {
+    margin: 12px 0 20px;
+    font-size: 0.98rem;
+    line-height: 1.45;
+  }
+
+  .transform-copy .primary-button {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    min-height: 56px;
+    border-radius: 10px;
+    padding: 10px 16px 10px 18px;
+    text-align: left;
+    line-height: 1.25;
+    box-shadow: 0 16px 34px rgba(99, 0, 9, 0.22);
+  }
+
+  .transform-copy .primary-button svg {
+    justify-self: end;
+    min-width: 18px;
+  }
+
   .guidance-list {
     grid-template-columns: 1fr;
   }
