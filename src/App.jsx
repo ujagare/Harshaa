@@ -4,17 +4,17 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from 'lenis';
 import { ArrowRight, ChevronDown, Menu, Sparkles } from 'lucide-react';
-import heroImage from '../hero.png';
-import card1 from '../card1.png';
-import card2 from '../card2.png';
-import card3 from '../card3.png';
-import card4 from '../card4.png';
-import transformationImage from '../TRANSFORMATION.png';
-import logoImage from '../Logo.png';
+import heroImage from './assets/images/hero.png';
+import card1 from './assets/images/card1.png';
+import card2 from './assets/images/card2.png';
+import card3 from './assets/images/card3.png';
+import card4 from './assets/images/card4.png';
+import transformationImage from './assets/images/TRANSFORMATION.png';
+import logoImage from './assets/images/Logo.png';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const iconModules = import.meta.glob('../icons/*.png', {
+const iconModules = import.meta.glob('./assets/icons/*.png', {
   eager: true,
   import: 'default',
 });

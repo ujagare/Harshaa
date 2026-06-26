@@ -16,6 +16,8 @@
 
 html {
   scroll-behavior: auto;
+  scrollbar-color: #76020c #fff1df;
+  scrollbar-width: thin;
 }
 
 body {
@@ -26,6 +28,33 @@ body {
     linear-gradient(180deg, #fff9ef 0%, #fff3e6 48%, #fff8ee 100%);
   color: var(--ink);
   font-family: Inter, system-ui, sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 13px;
+}
+
+::-webkit-scrollbar-track {
+  background:
+    linear-gradient(180deg, #fff8ee 0%, #f8e4cd 100%);
+  border-left: 1px solid rgba(149, 92, 28, 0.16);
+}
+
+::-webkit-scrollbar-thumb {
+  border: 3px solid #fff1df;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle at 35% 20%, rgba(255, 218, 132, 0.28), transparent 26%),
+    linear-gradient(180deg, #a30a18 0%, #76020c 52%, #390005 100%);
+  box-shadow:
+    inset 0 0 8px rgba(255, 217, 138, 0.18),
+    0 0 16px rgba(91, 0, 8, 0.24);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background:
+    radial-gradient(circle at 35% 20%, rgba(255, 230, 165, 0.34), transparent 26%),
+    linear-gradient(180deg, #bd1020 0%, #85070e 52%, #4a0208 100%);
 }
 
 a {
