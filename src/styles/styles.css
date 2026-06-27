@@ -1,13 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
 @import 'tailwindcss';
-
-@font-face {
-  font-family: 'Casko';
-  src: url('../assets/fonts/CaskoLuxuryDemoRegular.otf') format('opentype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
 
 :root {
   --wine: #85070e;
@@ -16,6 +7,8 @@
   --ink: #2b1712;
   --muted: #6c4f41;
   --cream: #fff8ee;
+  --font-heading: Gilroy, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-body: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 * {
@@ -35,7 +28,16 @@ body {
     radial-gradient(circle at 12% 20%, rgba(226, 175, 86, 0.22), transparent 28%),
     linear-gradient(180deg, #fff9ef 0%, #fff3e6 48%, #fff8ee 100%);
   color: var(--ink);
-  font-family: Inter, system-ui, sans-serif;
+  font-family: var(--font-body);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
 }
 
 body.mobile-menu-open {
@@ -123,6 +125,12 @@ img {
   object-position: 58% center;
 }
 
+.hero picture {
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+}
+
 .hero-veils {
   position: absolute;
   inset: 0;
@@ -150,9 +158,9 @@ img {
   align-items: center;
   gap: 12px;
   color: #4e0810;
-  font-family: 'Casko', Cinzel, serif;
+  font-family: var(--font-heading);
   font-size: clamp(0.9rem, 1.35vw, 1.22rem);
-  font-weight: 400;
+  font-weight: 700;
   letter-spacing: 0.04em;
   line-height: 1;
   text-transform: uppercase;
@@ -437,7 +445,7 @@ img {
     linear-gradient(135deg, rgba(255, 244, 222, 0.1), rgba(255, 244, 222, 0.03));
   padding: 0 16px;
   color: rgba(255, 244, 224, 0.9);
-  font-family: 'Casko', Cinzel, serif;
+  font-family: var(--font-heading);
   font-size: 1rem;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -535,9 +543,9 @@ img {
   align-items: center;
   gap: 15px;
   color: #5d201d;
-  font-family: 'Casko', Cinzel, serif;
+  font-family: var(--font-heading);
   font-size: clamp(0.78rem, 1.2vw, 1rem);
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
 }
@@ -553,9 +561,9 @@ img {
 .hero h1 {
   margin: 25px 0 20px;
   color: #540813;
-  font-family: 'Casko', 'Playfair Display', Georgia, serif;
+  font-family: var(--font-heading);
   font-size: clamp(2.65rem, 5.65vw, 5.55rem);
-  font-weight: 400;
+  font-weight: 700;
   letter-spacing: 0;
   line-height: 0.94;
 }
@@ -586,8 +594,17 @@ img {
   gap: 20px;
 }
 
+.services-background {
+  background:
+    var(--services-bg),
+    linear-gradient(180deg, #fff8ed 0%, #f8e9d7 100%);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 .after-hero {
-  background: linear-gradient(180deg, rgba(255, 247, 237, 0.04), #fff7ed 36%);
+  background: transparent;
 }
 
 .pillars-panel,
@@ -601,9 +618,9 @@ img {
 .bottom-stat strong {
   display: block;
   color: #9a671d;
-  font-family: 'Casko', Cinzel, serif;
+  font-family: var(--font-heading);
   font-size: 1.55rem;
-  font-weight: 400;
+  font-weight: 700;
   line-height: 1;
 }
 
@@ -618,18 +635,28 @@ img {
   display: grid;
   width: 100%;
   margin-top: 0;
-  border-radius: 22px;
-  overflow: hidden;
-  background:
-    linear-gradient(135deg, rgba(255, 253, 249, 0.95), rgba(255, 244, 226, 0.82)),
-    radial-gradient(circle at 12% 0%, rgba(211, 164, 80, 0.22), transparent 30%);
-  box-shadow: 0 28px 80px rgba(101, 50, 16, 0.16);
+  gap: 14px;
+  border: 0;
+  border-radius: 0;
+  overflow: visible;
+  background: transparent;
+  padding: 0;
+  box-shadow: none;
+  backdrop-filter: none;
 }
 
 .pillar {
   position: relative;
   min-height: 230px;
+  border: 1px solid rgba(255, 226, 176, 0.46);
+  border-radius: 18px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.42), rgba(255, 239, 213, 0.18));
   padding: 34px 26px 30px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.62),
+    0 20px 44px rgba(95, 46, 12, 0.12);
+  backdrop-filter: blur(16px) saturate(1.2);
   text-align: center;
 }
 
@@ -637,13 +664,13 @@ img {
   content: '';
   position: absolute;
   inset: 18px;
-  border: 1px solid rgba(202, 150, 61, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.28);
   border-radius: 16px;
   pointer-events: none;
 }
 
 .pillar + .pillar {
-  border-top: 1px solid rgba(176, 125, 55, 0.22);
+  border-top: 0;
 }
 
 .icon-orb {
@@ -693,8 +720,8 @@ img {
 .service-card h3,
 .transform-copy h2 {
   color: #5b1117;
-  font-family: 'Casko', 'Playfair Display', Georgia, serif;
-  font-weight: 400;
+  font-family: var(--font-heading);
+  font-weight: 700;
   letter-spacing: 0;
 }
 
@@ -717,6 +744,11 @@ img {
   background:
     radial-gradient(circle at 100% 4%, rgba(211, 162, 74, 0.18), transparent 26%),
     radial-gradient(circle at 0 42%, rgba(128, 8, 14, 0.06), transparent 26%);
+}
+
+.section-wrap {
+  overflow: hidden;
+  background: transparent;
 }
 
 .section-heading {
@@ -762,11 +794,9 @@ img {
 }
 
 .service-icon {
-  position: absolute;
-  top: 167px;
-  left: 50%;
-  z-index: 2;
-  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  margin: 18px 0 0;
 }
 
 .service-orb {
@@ -788,7 +818,7 @@ img {
 }
 
 .service-body {
-  padding: 53px 28px 28px;
+  padding: 14px 28px 28px;
   text-align: center;
 }
 
@@ -834,7 +864,7 @@ img {
 
 .transform-copy span {
   color: #7e3722;
-  font-family: 'Casko', Cinzel, serif;
+  font-family: var(--font-heading);
   font-size: 0.94rem;
   letter-spacing: 0.13em;
   text-transform: uppercase;
@@ -893,6 +923,20 @@ img {
   white-space: nowrap;
 }
 
+.guidance-list .icon-orb.tiny {
+  flex: 0 0 48px;
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  overflow: hidden;
+}
+
+.guidance-list .icon-orb.tiny img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .transform-content {
   min-width: 0;
   border-left: 1px solid rgba(184, 128, 42, 0.22);
@@ -948,14 +992,14 @@ img {
   position: relative;
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 20px;
   border: 1px solid rgba(191, 135, 51, 0.18);
   border-radius: 18px;
-  padding: 24px 24px;
+  padding: 24px 26px;
   background:
     linear-gradient(135deg, rgba(255, 252, 247, 0.78), rgba(255, 243, 226, 0.58)),
     radial-gradient(circle at 100% 0%, rgba(128, 8, 14, 0.08), transparent 42%);
-  min-height: 128px;
+  min-height: 148px;
   transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
 }
 
@@ -987,9 +1031,9 @@ img {
 }
 
 .bottom-stat .icon-orb.small {
-  width: 72px;
-  height: 72px;
-  min-width: 72px;
+  width: 92px;
+  height: 92px;
+  min-width: 92px;
   border-color: rgba(232, 185, 95, 0.5);
   background:
     radial-gradient(circle at 35% 25%, rgba(255, 224, 151, 0.38), transparent 28%),
@@ -1000,8 +1044,9 @@ img {
 }
 
 .bottom-stat .icon-orb.small img {
-  width: 52px;
-  height: 52px;
+  width: 74px;
+  height: 74px;
+  object-fit: cover;
 }
 
 .bottom-stat strong {
@@ -1079,7 +1124,7 @@ img {
 .footer-column h4 {
   margin: 0 0 6px;
   color: #e8bd63;
-  font-family: 'Casko', Cinzel, serif;
+  font-family: var(--font-heading);
   font-size: 1rem;
   font-weight: 400;
   letter-spacing: 0.08em;
@@ -1207,9 +1252,9 @@ img {
 .about-kicker,
 .about-section-title h2 {
   color: #a86612;
-  font-family: 'Casko', Cinzel, serif;
+  font-family: var(--font-heading);
   font-size: 0.9rem;
-  font-weight: 400;
+  font-weight: 700;
   letter-spacing: 0.22em;
   text-transform: uppercase;
 }
@@ -1219,9 +1264,9 @@ img {
 .about-ready h2 {
   margin: 18px 0;
   color: #4d0a12;
-  font-family: 'Casko', 'Playfair Display', Georgia, serif;
+  font-family: var(--font-heading);
   font-size: clamp(2.55rem, 4.35vw, 4.85rem);
-  font-weight: 400;
+  font-weight: 700;
   line-height: 0.98;
 }
 
@@ -1232,7 +1277,7 @@ img {
 
 .about-hero h1 strong {
   color: #b7832c;
-  font-weight: 400;
+  font-weight: 700;
 }
 
 .about-title-mark {
@@ -1393,7 +1438,7 @@ img {
   background: rgba(255, 248, 236, 0.68);
   padding: 10px 16px;
   color: #8a4308;
-  font-family: Georgia, serif;
+  font-family: var(--font-body);
   font-size: 1.18rem;
 }
 
@@ -1507,9 +1552,9 @@ img {
 .credential-item h3 {
   margin: 0 0 18px;
   color: #f7d08a;
-  font-family: 'Casko', 'Playfair Display', Georgia, serif;
+  font-family: var(--font-heading);
   font-size: 1.52rem;
-  font-weight: 400;
+  font-weight: 700;
 }
 
 .philosophy-card p {
@@ -1539,7 +1584,7 @@ img {
 .about-credentials > p {
   margin: 0 auto 22px;
   color: #351f18;
-  font-family: Georgia, serif;
+  font-family: var(--font-body);
   font-size: 1.15rem;
   font-weight: 600;
 }
@@ -1611,7 +1656,7 @@ img {
 
 .about-quote span {
   color: #e5b859;
-  font-family: Georgia, serif;
+  font-family: var(--font-body);
   font-size: 4.6rem;
   line-height: 0.45;
 }
@@ -1620,7 +1665,7 @@ img {
   margin: 0;
   max-width: 620px;
   color: #f4dfb4;
-  font-family: Georgia, serif;
+  font-family: var(--font-body);
   font-size: clamp(1.5rem, 2.15vw, 2.35rem);
   line-height: 1.24;
 }
@@ -1629,7 +1674,7 @@ img {
   display: block;
   margin-top: 10px;
   color: #f0bd58;
-  font-family: Georgia, serif;
+  font-family: var(--font-body);
   font-size: clamp(1.22rem, 1.75vw, 1.85rem);
   font-style: italic;
   font-weight: 400;
@@ -1656,7 +1701,7 @@ img {
 
   .pillar + .pillar {
     border-top: 0;
-    border-left: 1px solid rgba(176, 125, 55, 0.22);
+    border-left: 0;
   }
 }
 
@@ -1780,12 +1825,30 @@ img {
 
 @media (max-width: 640px) {
   .hero {
-    min-height: 590px;
+    min-height: max(820px, 100svh);
     padding-top: 14px;
+    background: #fff9f1;
+  }
+
+  .hero picture {
+    top: 64px;
+    bottom: auto;
+    height: auto;
+  }
+
+  .hero-bg {
+    position: relative;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    object-position: top center;
   }
 
   .hero-content {
-    padding-top: 42px !important;
+    min-height: calc(max(820px, 100svh) - 78px);
+    align-items: end;
+    padding-top: 0 !important;
+    padding-bottom: 36px;
   }
 
   .brand-mark {
@@ -1809,33 +1872,40 @@ img {
   }
 
   .hero-copy {
-    max-width: 88%;
-    padding-bottom: 34px;
+    max-width: 100%;
+    margin: 0 auto;
+    padding-bottom: 0;
+    text-align: center;
   }
 
   .hero h1 {
-    margin: 14px 0 12px;
-    font-size: clamp(1.92rem, 9.2vw, 2.48rem);
-    line-height: 0.92;
+    margin: 8px 0 10px;
+    font-size: clamp(1.65rem, 7.4vw, 2rem);
+    line-height: 1.02;
   }
 
   .eyebrow,
   .subline {
-    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
     gap: 10px;
-    font-size: 0.72rem;
-    letter-spacing: 0.12em;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
   }
 
   .subline {
-    font-size: 0.86rem;
+    font-size: 0.82rem;
   }
 
   .hero-copy p {
-    margin: 18px 0 18px;
-    max-width: 300px;
-    font-size: 0.92rem;
-    line-height: 1.55;
+    margin: 12px auto 14px;
+    max-width: 320px;
+    font-size: 0.86rem;
+    line-height: 1.46;
+  }
+
+  .hero-actions {
+    gap: 10px;
   }
 
   .hero-actions,
@@ -1853,6 +1923,13 @@ img {
 
   .after-hero {
     padding-top: 28px;
+  }
+
+  .services-background {
+    background-image:
+      var(--services-mobile-bg),
+      linear-gradient(180deg, #fff8ed 0%, #f8e9d7 100%);
+    background-position: center top;
   }
 
   .service-image {
@@ -1920,7 +1997,19 @@ img {
   .bottom-stat {
     border-right: 0;
     border-bottom: 1px solid rgba(176, 125, 55, 0.2);
-    min-height: 104px;
+    min-height: 128px;
+    padding: 20px 18px;
+  }
+
+  .bottom-stat .icon-orb.small {
+    width: 82px;
+    height: 82px;
+    min-width: 82px;
+  }
+
+  .bottom-stat .icon-orb.small img {
+    width: 66px;
+    height: 66px;
   }
 
   .bottom-stat:last-child {

@@ -6,12 +6,15 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from 'lenis';
 import { ArrowRight, ChevronDown, Menu, Sparkles, X } from 'lucide-react';
 import heroImage from './assets/images/hero.png';
+import mobileHeroImage from './assets/images/mobile.png';
 import card1 from './assets/images/card1.png';
 import card2 from './assets/images/card2.png';
 import card3 from './assets/images/card3.png';
 import card4 from './assets/images/card4.png';
 import transformationImage from './assets/images/TRANSFORMATION.png';
 import logoImage from './assets/images/Logo.png';
+import servicesBgImage from './assets/images/ChatGPT Image Jun 27, 2026, 02_14_28 PM.png';
+import servicesMobileBgImage from './assets/images/mobile2.png';
 import aboutHeroImage from './assets/images/About/ChatGPT Image Jun 26, 2026, 11_22_59 PM.png';
 import aboutPortraitImage from './assets/images/About/ChatGPT Image Jun 26, 2026, 10_52_02 PM.png';
 import aboutCreamBg from './assets/images/About/ChatGPT Image Jun 26, 2026, 11_27_26 PM.png';
@@ -333,7 +336,10 @@ function HomePage({ icons }) {
   return (
     <>
       <section className="hero relative isolate min-h-screen px-5 py-5 md:px-10 lg:px-16">
-        <img className="hero-bg" src={heroImage} alt="Golden abundance healing goddess" />
+        <picture>
+          <source media="(max-width: 640px)" srcSet={mobileHeroImage} />
+          <img className="hero-bg" src={heroImage} alt="Golden abundance healing goddess" />
+        </picture>
         <div className="hero-veils" />
         <div className="hero-glow" />
         <SiteHeader />
@@ -376,6 +382,13 @@ function HomePage({ icons }) {
         </div>
       </section>
 
+      <div
+        className="services-background"
+        style={{
+          '--services-bg': `url("${servicesBgImage}")`,
+          '--services-mobile-bg': `url("${servicesMobileBgImage}")`,
+        }}
+      >
       <section className="after-hero relative z-20 px-5 pb-12 pt-10 md:px-10 lg:px-16">
         <div className="mx-auto w-full">
           <div className="pillars-panel reveal-up">
@@ -390,7 +403,10 @@ function HomePage({ icons }) {
         </div>
       </section>
 
-      <section id="services" className="section-wrap px-5 py-14 md:px-10 lg:px-16">
+      <section
+        id="services"
+        className="section-wrap px-5 py-14 md:px-10 lg:px-16"
+      >
         <div className="section-heading reveal-up">
           <div className="decor-line">
             <span />
@@ -420,6 +436,7 @@ function HomePage({ icons }) {
           ))}
         </div>
       </section>
+      </div>
 
       <section id="home-transformation" className="transformation px-5 pb-20 pt-6 md:px-10 lg:px-16">
         <div className="transformation-panel mx-auto grid w-full items-center gap-8">
